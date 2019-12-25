@@ -1,4 +1,4 @@
-import { addCube, generateNObjects, animate } from './threejs'
+import { generateTree, generateNObjects, animate } from './threejs'
 
-generateNObjects(1000, addCube)
+generateNObjects(1000, generateTree)
 animate()
