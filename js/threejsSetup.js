@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 
+//// SETUP - START ////
 // Scene and camera
 export const scene = new THREE.Scene()
 export const camera = new THREE.PerspectiveCamera(
@@ -12,12 +13,10 @@ export const renderer = new THREE.WebGLRenderer()
 renderer.setSize( window.innerWidth, window.innerHeight)
 renderer.setClearColor (0xf0fcff, 1)
 document.body.appendChild(renderer.domElement)
+//// SETUP - END ////
 
-// Objects
-const geometry = new THREE.BoxGeometry( 2, 1, 2 )
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
-const cube = new THREE.Mesh( geometry, material )
 
+//// BUILDING - START ////
 // Adding to scenes
 export const addCube = ({
 	posX = 0, posY = 0, posZ = 0,
@@ -30,9 +29,12 @@ export const addCube = ({
 	cube.position.set(posX, posY, posZ)
 	scene.add(cube)
 }
+//// BUILDING - END ////
 
-// Animating
+
+//// ANIMATING - START ////
 export const animate = () => {
 	requestAnimationFrame(animate)
 	renderer.render(scene, camera)
 }
+//// ANIMATING - END ////
