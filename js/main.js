@@ -1,4 +1,4 @@
-import { addCube, animate } from './threejsSetup.js'
+import { addCube, generateNObjects, animate } from './threejs'
 
-addCube({})
+generateNObjects(1000, addCube)
 animate()
