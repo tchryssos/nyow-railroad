@@ -1,4 +1,4 @@
 import { generateTree, generateNObjects, animate } from './threejs'
 
-generateNObjects(1000, generateTree)
+generateNObjects(1, generateTree)
 animate()

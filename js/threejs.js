@@ -13,7 +13,7 @@ export const scene = new Scene()
 export const camera = new PerspectiveCamera(
 	75, window.innerWidth / window.innerHeight, 0.1, 1000,
 )
-camera.position.z = 200
+camera.position.z = 10
 camera.position.y = 5
 export const renderer = new WebGLRenderer()
 
@@ -26,7 +26,7 @@ document.body.appendChild(renderer.domElement)
 
 //// BUILDING - START ////
 // Adding to scenes
-export const generateRectangle = ({
+export const createCube = ({
 	posX = 0, posY = 0, posZ = 0,
 	objX = 0.5, objY = 0.5, objZ = 0.5,
 	objColor = randomGreen(),
@@ -38,12 +38,12 @@ export const generateRectangle = ({
 	return cube
 }
 
-export const generateTrunk = () => generateRectangle({ objY: 3, objColor: brown })
+export const generateTrunk = () => createCube({ objY: 3, objColor: brown })
 
 export const generateNObjects = (n, generatorFunc, posMod = 1) => {
 	const generator = (nthTime) => {
 		const modNumber = nthTime * posMod
-		generatorFunc({
+		return generatorFunc({
 			posX: randomOrNegativeNumber(modNumber),
 			posZ: randomNumber(modNumber),
 		})
@@ -54,9 +54,10 @@ export const generateNObjects = (n, generatorFunc, posMod = 1) => {
 export const generateTree = ({
 	posX = 0, posY = 0, posZ = 0,
 }) => {
-	const leaves = generateNObjects(5, generateRectangle, 0.5)
+	const leaves = generateNObjects(20, createCube, 0.05)
 	const leafGroup = new Group()
 	leaves.forEach(leaf => leafGroup.add(leaf))
+	console.log(leafGroup)
 	leafGroup.position.y = 2
 	const trunk = generateTrunk()
 	const treeGroup = new Group()
