@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import times from 'ramda/src/times'
-import { green, randomGreen } from './colors'
+import { green3, randomGreen } from './colors'
 import { randomOrNegativeNumber, randomNumber } from './util'
 
 //// SETUP - START ////
@@ -25,7 +25,7 @@ document.body.appendChild(renderer.domElement)
 export const addCube = ({
 	posX = 0, posY = 0, posZ = 0,
 	objX = 1, objY = 1, objZ = 1,
-	objColor = green,
+	objColor = green3,
 }) => {
 	const geometry = new THREE.BoxGeometry(objX, objY, objZ)
 	const material = new THREE.MeshBasicMaterial({ color: objColor })
