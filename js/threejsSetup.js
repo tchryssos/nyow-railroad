@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 // Scene and camera
 export const scene = new THREE.Scene()
 export const camera = new THREE.PerspectiveCamera(
@@ -17,5 +19,7 @@ camera.position.z = 5
 
 export const animate = () => {
 	requestAnimationFrame( animate )
+	cube.rotation.x += 0.01
+	cube.rotation.y += 0.01
 	renderer.render( scene, camera )
 }
