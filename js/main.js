@@ -1,3 +1,4 @@
-import { animate } from './threejsSetup.js'
+import { addCube, animate } from './threejsSetup.js'
 
+addCube({})
 animate()
