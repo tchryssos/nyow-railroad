@@ -63,25 +63,27 @@ export const generateNObjects = (n, generatorFunc, posMod = 1, generatorProps = 
 // Trees - Start
 const getLeafHeightArray = () => {
 	const leafHeightWholeRange = range(treeHeight - 3, treeHeight + 2)
+	const leafDecimalIntervals = range(1, 1 / leafSize)
+	const leafDecimalModifiers = map(interval => interval * leafSize, leafDecimalIntervals)
 	return flatten(reduce(
 		(acc, val) => {
 			const decimals = map(
-				(num) => val - num, [0.2, 0.4, 0.6, 0.8]
+				(num) => val - num, leafDecimalModifiers,
 			)
 			acc.push(decimals)
 			return acc
 		},
-		[],
+		leafHeightWholeRange,
 		leafHeightWholeRange,
 	))
 }
 const leafHeightArray = getLeafHeightArray()
-console.log(leafHeightArray)
+
 export const generateTree = ({
 	posX = 0, posY = 0, posZ = 0,
 }) => {
 	const leaves = generateNObjects(
-		30, createCube, 0.05, { objX: leafSize, objY: leafSize, objZ: leafSize },
+		100, createCube, 0.05, { objX: leafSize, objY: leafSize, objZ: leafSize },
 	)
 	const leafGroup = new Group()
 	leaves.forEach((leaf) => {
