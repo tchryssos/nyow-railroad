@@ -9,7 +9,9 @@ import { brown } from '/js/colors'
 import { createCube, generateNObjects } from '/js/threejs/basic'
 import { scene } from '/js/threejs/setup'
 
-const createTrunk = () => createCube({ objY: treeHeight, objColor: brown })
+const createTrunk = () => createCube({
+	objX: 0.6, objZ: 0.6, objY: treeHeight, color: brown,
+})
 
 const getLeafHeightArray = () => {
 	const leafHeightWholeRange = range(treeHeight - 3, treeHeight + 2)
@@ -33,7 +35,12 @@ export const generateTree = ({
 	posX = 0, posY = 0, posZ = 0,
 }) => {
 	const leaves = generateNObjects(
-		100, createCube, 0.05, { objX: leafSize, objY: leafSize, objZ: leafSize },
+		100, createCube, 0.03, {
+			objX: leafSize,
+			objY: leafSize,
+			objZ: leafSize,
+			opacity: 0.85,
+		},
 	)
 	const leafGroup = new Group()
 	leaves.forEach((leaf) => {
