@@ -1,10 +1,12 @@
 import {
 	Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight,
+	HemisphereLight,
 } from 'three'
 import forEach from 'ramda/src/forEach'
-import { sun } from '/js/colors'
+import { sun, clayRed, overcast } from '/js/colors'
 import { createTree } from '/js/threejs/trees'
 import { generateNObjects } from '/js/threejs/basic'
+
 // Scene
 export const scene = new Scene()
 
@@ -20,11 +22,14 @@ camera.position.z = 100
 camera.position.y = 10
 
 // Light
-const light = new DirectionalLight(sun, 1)
-light.position.set(10, 1000, 10)
-light.target.position.set(0, 0, 0)
-scene.add(light)
-scene.add(light.target)
+const sunLight = new DirectionalLight(sun, 1)
+sunLight.position.set(10, 1000, 10)
+sunLight.target.position.set(0, 0, 0)
+scene.add(sunLight)
+scene.add(sunLight.target)
+
+const dayLight = new HemisphereLight(overcast, clayRed, 1)
+scene.add(dayLight)
 
 // Landscape
 export const generateLandscape = ({
@@ -37,7 +42,7 @@ export const generateLandscape = ({
 // Renderer
 export const renderer = new WebGLRenderer()
 renderer.setSize( window.innerWidth, window.innerHeight)
-renderer.setClearColor (0xf0fcff, 1)
+renderer.setClearColor (overcast, 1)
 document.body.appendChild(renderer.domElement)
 
 export const animate = () => {

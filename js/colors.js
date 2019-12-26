@@ -15,12 +15,14 @@ export const green6 = 0x103b26
 // Red
 export const red3 = 0xad1d1d
 export const red6 = 0x751717
+export const clayRed = 0x9e6852
 
 // Other
 export const brown = 0x4a2f18
 export const yellow = 0xd2ed21
 export const darkPurple = 0x371047
 export const sun = 0xfffed9
+export const overcast = 0xccd9ed
 
 // Color Palettes
 export const greens = [green0, green1, green2, green3, green4, green5, green6]
