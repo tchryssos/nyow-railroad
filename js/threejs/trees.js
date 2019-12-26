@@ -4,10 +4,10 @@ import map from 'ramda/src/map'
 import flatten from 'ramda/src/flatten'
 import range from 'ramda/src/range'
 import nth from 'ramda/src/nth'
-import { treeHeight, leafSize } from '../constants'
-import { brown } from '../colors'
-import { createCube, generateNObjects } from './basic'
-import { scene } from './setup'
+import { treeHeight, leafSize } from '/js/constants'
+import { brown } from '/js/colors'
+import { createCube, generateNObjects } from '/js/threejs/basic'
+import { scene } from '/js/threejs/setup'
 
 const createTrunk = () => createCube({ objY: treeHeight, objColor: brown })
 
