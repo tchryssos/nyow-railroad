@@ -31,7 +31,7 @@ const getLeafHeightArray = () => {
 }
 const leafHeightArray = getLeafHeightArray()
 
-export const generateTree = ({
+export const createTree = ({
 	posX = 0, posY = 0, posZ = 0,
 }) => {
 	const leaves = generateNObjects(
@@ -55,5 +55,5 @@ export const generateTree = ({
 	treeGroup.add(trunk)
 	treeGroup.add(leafGroup)
 	treeGroup.position.set(posX, posY, posZ)
-	scene.add(treeGroup)
+	return treeGroup
 }

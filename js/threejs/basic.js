@@ -1,5 +1,6 @@
 import {
 	BoxGeometry, MeshLambertMaterial, Mesh,
+	PlaneGeometry,
 } from 'three'
 import times from 'ramda/src/times'
 import { randomOrNegativeNumber, randomNumber } from '/js/util'
