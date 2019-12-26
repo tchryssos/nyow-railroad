@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import {
 	Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial,
 	Mesh, Group,
@@ -65,10 +64,14 @@ export const generateNObjects = (n, generatorFunc, posMod = 1, generatorProps = 
 const getLeafHeightArray = () => {
 	const leafHeightWholeRange = range(treeHeight - 3, treeHeight + 2)
 	return flatten(reduce(
-		(val) => map(
-			(num) => num * val, range(1, 1 / leafSize)
-		),
-		leafHeightWholeRange,
+		(acc, val) => {
+			const decimals = map(
+				(num) => val - num, [0.2, 0.4, 0.6, 0.8]
+			)
+			acc.push(decimals)
+			return acc
+		},
+		[],
 		leafHeightWholeRange,
 	))
 }
