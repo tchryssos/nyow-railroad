@@ -1,12 +1,13 @@
 import {
 	Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight,
-	HemisphereLight,
+	HemisphereLight, TextureLoader,
 } from 'three'
 import forEach from 'ramda/src/forEach'
 import { sun, clayRed, overcast } from '/js/colors'
 import { treeHeight } from '/js/constants'
 import { createTree } from '/js/threejs/trees'
-import { generateNObjects, createCube } from '/js/threejs/basic'
+import { createGround } from '/js/threejs/ground'
+import { generateNObjects, createRectangle } from '/js/threejs/basic'
 
 // Scene
 export const scene = new Scene()
@@ -34,17 +35,14 @@ scene.add(dayLight)
 
 // Landscape
 export const generateLandscape = ({
-	treeCount = 500,
+	treeCount = 100,
 }) => {
-	const trees = generateNObjects(treeCount, createTree)
-	const ground = createCube({
-		objX: 1000, objY: 1000, objZ: 0.01, color: clayRed,
-	})
-	ground.rotateX(Math.PI / 2)
-	forEach((item) => {
-		item.position.y = treeHeight / 2
-		scene.add(item)
-	}, trees)
+	// const trees = generateNObjects(treeCount, createTree)
+	// forEach((item) => {
+	// 	item.position.y = treeHeight / 2
+	// 	scene.add(item)
+	// }, trees)
+	const ground = createGround()
 	scene.add(ground)
 }
 

@@ -6,9 +6,9 @@ import range from 'ramda/src/range'
 import nth from 'ramda/src/nth'
 import { treeHeight, leafSize } from '/js/constants'
 import { brown } from '/js/colors'
-import { createCube, generateNObjects } from '/js/threejs/basic'
+import { createRectangle, generateNObjects } from '/js/threejs/basic'
 
-const createTrunk = () => createCube({
+const createTrunk = () => createRectangle({
 	objX: 0.6, objZ: 0.6, objY: treeHeight, color: brown,
 })
 
@@ -34,7 +34,7 @@ export const createTree = ({
 	posX = 0, posY = 0, posZ = 0,
 }) => {
 	const leaves = generateNObjects(
-		100, createCube, 0.03, {
+		100, createRectangle, 0.03, {
 			objX: leafSize,
 			objY: leafSize,
 			objZ: leafSize,

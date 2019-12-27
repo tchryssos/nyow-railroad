@@ -1,12 +1,12 @@
 import {
 	BoxGeometry, MeshLambertMaterial, Mesh,
-	PlaneBufferGeometry, MeshBasicMaterial,
+	PlaneBufferGeometry,
 } from 'three'
 import times from 'ramda/src/times'
 import { randomOrNegativeNumber, randomNumber } from '/js/util'
 import { randomGreen, clayRed } from '/js/colors'
 
-export const createCube = ({
+export const createRectangle = ({
 	posX = 0,
 	posY = 0,
 	posZ = 0,
