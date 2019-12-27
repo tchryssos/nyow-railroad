@@ -13,14 +13,14 @@ import { generateNObjects, createRectangle } from '/js/threejs/basic'
 export const scene = new Scene()
 
 // Camera
-const fov = 75
+const fov = 100
 const aspect = window.innerWidth / window.innerHeight
 const near = 0.1
 const far = 1000
 const camera = new PerspectiveCamera(
 	fov, aspect, near, far,
 )
-camera.position.z = 150
+camera.position.z = 100
 camera.position.y = 10
 
 // Light
@@ -37,11 +37,11 @@ scene.add(dayLight)
 export const generateLandscape = ({
 	treeCount = 100,
 }) => {
-	// const trees = generateNObjects(treeCount, createTree)
-	// forEach((item) => {
-	// 	item.position.y = treeHeight / 2
-	// 	scene.add(item)
-	// }, trees)
+	const trees = generateNObjects(treeCount, createTree)
+	forEach((item) => {
+		item.position.y = treeHeight / 2
+		scene.add(item)
+	}, trees)
 	const ground = createGround()
 	scene.add(ground)
 }
