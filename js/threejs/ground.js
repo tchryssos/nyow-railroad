@@ -1,21 +1,16 @@
 import {
 	TextureLoader, MeshBasicMaterial, Mesh, BoxGeometry,
+	RepeatWrapping,
 } from 'three'
-import { clayRed } from '/js/colors'
-import { createRectangle } from '/js/threejs/basic'
 
 export const createGround = () => {
-	const texture = new TextureLoader().load('/ground1.png')
+	const texture = new TextureLoader().load('/ground-grid.png')
+	texture.repeat.set(8, 8)
+	texture.wrapS = RepeatWrapping
+	texture.wrapT = RepeatWrapping
 	const material = new MeshBasicMaterial({ map: texture })
-	const geometry = new BoxGeometry(100, 100, 100)
+	const geometry = new BoxGeometry(1024, 1024, 0.1)
 	const ground = new Mesh(geometry, material)
-	// const ground = createRectangle({
-	// 	objX: 1000,
-	// 	objY: 1000,
-	// 	objZ: 0.01,
-	// 	color: clayRed,
-	// })
-
-	// ground.rotateX(Math.PI / 2)
+	ground.rotateX(Math.PI / 2)
 	return ground
 }
