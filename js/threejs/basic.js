@@ -39,7 +39,7 @@ export const createPlane = ({
 }) => {
 	const transparent = opacity !== 1
 	const geometry = new PlaneBufferGeometry(objX, objY, segX, segY)
-	const material = new MeshBasicMaterial({ color })
+	const material = new MeshLambertMaterial({ color })
 	const plane = new Mesh(geometry, material)
 	return plane
 }

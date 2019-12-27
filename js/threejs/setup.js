@@ -4,8 +4,9 @@ import {
 } from 'three'
 import forEach from 'ramda/src/forEach'
 import { sun, clayRed, overcast } from '/js/colors'
+import { treeHeight } from '/js/constants'
 import { createTree } from '/js/threejs/trees'
-import { generateNObjects } from '/js/threejs/basic'
+import { generateNObjects, createCube } from '/js/threejs/basic'
 
 // Scene
 export const scene = new Scene()
@@ -18,7 +19,7 @@ const far = 1000
 const camera = new PerspectiveCamera(
 	fov, aspect, near, far,
 )
-camera.position.z = 100
+camera.position.z = 150
 camera.position.y = 10
 
 // Light
@@ -33,10 +34,18 @@ scene.add(dayLight)
 
 // Landscape
 export const generateLandscape = ({
-	treeCount = 100,
+	treeCount = 500,
 }) => {
 	const trees = generateNObjects(treeCount, createTree)
-	forEach((item) => scene.add(item), trees)
+	const ground = createCube({
+		objX: 1000, objY: 1000, objZ: 0.01, color: clayRed,
+	})
+	ground.rotateX(Math.PI / 2)
+	forEach((item) => {
+		item.position.y = treeHeight / 2
+		scene.add(item)
+	}, trees)
+	scene.add(ground)
 }
 
 // Renderer

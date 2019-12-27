@@ -7,7 +7,6 @@ import nth from 'ramda/src/nth'
 import { treeHeight, leafSize } from '/js/constants'
 import { brown } from '/js/colors'
 import { createCube, generateNObjects } from '/js/threejs/basic'
-import { scene } from '/js/threejs/setup'
 
 const createTrunk = () => createCube({
 	objX: 0.6, objZ: 0.6, objY: treeHeight, color: brown,
